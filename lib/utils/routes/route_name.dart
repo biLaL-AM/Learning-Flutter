@@ -1,10 +1,9 @@
 import 'package:door_shark/utils/routes/routes.dart';
-import 'package:door_shark/view/contractorSignUp.dart';
-import 'package:door_shark/view/customerSignUp.dart';
-import 'package:door_shark/view/userSelection.dart';
-import 'package:door_shark/view/getStarted.dart';
+import 'package:door_shark/views/commonScreens/getStarted.dart';
+import 'package:door_shark/views/commonScreens/userSelection.dart';
+import 'package:door_shark/views/contractorScreens/contractorSignUp.dart';
+import 'package:door_shark/views/customerSignUp.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Routes {
   static Route<dynamic> generateRoutes(RouteSettings settings) {
@@ -24,7 +23,7 @@ class Routes {
       default:
         return MaterialPageRoute(builder: (_) {
           return const Scaffold(
-            body: Center(
+            body: Center( 
               child: Text("No route is defined for"),
             ),
           );
