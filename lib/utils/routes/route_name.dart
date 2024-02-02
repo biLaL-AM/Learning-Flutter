@@ -2,7 +2,7 @@ import 'package:door_shark/utils/routes/routes.dart';
 import 'package:door_shark/views/commonScreens/getStarted.dart';
 import 'package:door_shark/views/commonScreens/userSelection.dart';
 import 'package:door_shark/views/contractorScreens/contractorSignUp.dart';
-import 'package:door_shark/views/customerSignUp.dart';
+import 'package:door_shark/views/customerScreens/customerSignUp.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
@@ -23,7 +23,7 @@ class Routes {
       default:
         return MaterialPageRoute(builder: (_) {
           return const Scaffold(
-            body: Center( 
+            body: Center(
               child: Text("No route is defined for"),
             ),
           );
