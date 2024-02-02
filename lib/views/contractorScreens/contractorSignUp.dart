@@ -1,9 +1,15 @@
 // ignore_for_file: file_names
 
 import 'dart:developer';
+import 'dart:io';
 
+import 'package:door_shark/utils/services/imagehelper.dart';
+import 'package:door_shark/utils/widgets/custommodalbottomshet.dart';
+import 'package:door_shark/utils/widgets/mysnackBar.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:validators/validators.dart';
 
@@ -43,6 +49,32 @@ class _ContractorSignUpState extends State<ContractorSignUp> {
     'Green Cleaning',
     'Pressure Washing'
   ];
+
+  //pick image generic method
+  File? _imagePicked;
+  File? _imagePicked2;
+
+  pickImage(ImageSource source) async {
+    //pick image
+    try {
+      final file = await ImageHelper().pickImage(source, 100);
+      if (file != null) {
+        final croppedFile = await ImageHelper().cropImage(file.path);
+        if (croppedFile != null) {
+          setState(() {
+            _imagePicked = File(croppedFile.path);
+            //  areValuesUPdated();
+          });
+        }
+      }
+    } catch (e) {
+      MySnackbar().showSnackBar(
+        text:
+            "Camera access permissions required to take photo, Please give permission to access camera of the device.",
+        backgroundcolor: Colors.redAccent,
+      );
+    }
+  }
 
   @override
   void dispose() {
@@ -645,6 +677,136 @@ class _ContractorSignUpState extends State<ContractorSignUp> {
                                   fillColor: Colors.white,
                                   filled: true),
                             ),
+                          ),
+                          SizedBox(
+                            height: 15.h,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 5, vertical: 5),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Text("License Image",
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    fontFamily: 'Montserrat',
+                                    color: Colors.black,
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Text("Front license",
+                                        style: TextStyle(
+                                          fontFamily: 'Montserrat',
+                                          color: Colors.grey,
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.normal,
+                                        )),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        showModalBottomSheet(
+                                            context: context,
+                                            builder: (context2) =>
+                                                CustomModalBottomSheet(
+                                                    buildcontext: context2,
+                                                    callback: pickImage));
+                                      },
+                                      child: DottedBorder(
+                                        borderType: BorderType.RRect,
+                                        radius: const Radius.circular(12),
+                                        padding: const EdgeInsets.all(6),
+                                        child: ClipRRect(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(12)),
+                                          child: _imagePicked == null
+                                              ? Container(
+                                                  height: 80.h,
+                                                  color: Colors.transparent,
+                                                  child: const Center(
+                                                    child: Icon(
+                                                      Icons.add_a_photo,
+                                                      color: Colors.grey,
+                                                    ),
+                                                  ),
+                                                )
+                                              : Expanded(
+                                                  child: Container(
+                                                    height: 80.h,
+                                                    color: Colors.transparent,
+                                                    child: Image.file(
+                                                        _imagePicked!),
+                                                  ),
+                                                ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Text("Back license",
+                                        style: TextStyle(
+                                          fontFamily: 'Montserrat',
+                                          color: Colors.grey,
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.normal,
+                                        )),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        showModalBottomSheet(
+                                            context: context,
+                                            builder: (context2) =>
+                                                CustomModalBottomSheet(
+                                                    buildcontext: context2,
+                                                    callback: pickImage));
+                                      },
+                                      child: DottedBorder(
+                                        borderType: BorderType.RRect,
+                                        radius: const Radius.circular(12),
+                                        padding: const EdgeInsets.all(6),
+                                        child: ClipRRect(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(12)),
+                                          child: _imagePicked == null
+                                              ? Container(
+                                                  height: 80.h,
+                                                  color: Colors.transparent,
+                                                  child: const Center(
+                                                    child: Icon(
+                                                      Icons.add_a_photo,
+                                                      color: Colors.grey,
+                                                    ),
+                                                  ),
+                                                )
+                                              : Expanded(
+                                                  child: Container(
+                                                    height: 80.h,
+                                                    color: Colors.transparent,
+                                                    child: Image.file(
+                                                        _imagePicked!),
+                                                  ),
+                                                ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
                           ),
 
                           ///

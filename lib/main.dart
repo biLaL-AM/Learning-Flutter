@@ -20,6 +20,9 @@ void main() {
   runApp(const MyApp());
 }
 
+final navigatorkey = GlobalKey<NavigatorState>();
+final scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -32,6 +35,8 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           title: 'Door Shark',
+          scaffoldMessengerKey: scaffoldMessengerKey,
+          navigatorKey: navigatorkey,
           theme: ThemeData(
               appBarTheme: AppBarTheme(
                   //backgroundColor: Colors.transparent
