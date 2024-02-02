@@ -120,7 +120,7 @@ class _MyWidgetState extends State<UserSelection> {
                       child: ElevatedButton(
                         onPressed: () {
                           // Navigator.of(context).pushNamed("/2ndscreen");
-                          Navigator.pushReplacementNamed(
+                          Navigator.pushNamed(
                               context, RoutesName.customerSignUp);
                         },
                         style: ElevatedButton.styleFrom(
@@ -164,7 +164,7 @@ class _MyWidgetState extends State<UserSelection> {
                       child: ElevatedButton(
                         onPressed: () {
                           // Navigator.of(context).pushNamed("/2ndscreen");
-                          Navigator.pushReplacementNamed(
+                          Navigator.pushNamed(
                               context, RoutesName.contractorSignUp);
                         },
                         style: ElevatedButton.styleFrom(
