@@ -1,5 +1,6 @@
 class RoutesName {
   static const String getStarted = '/getStarted';
+  static const String splashscreen = '/splashScreen';
   static const String selectUser = '/selectUser';
   static const String customerSignUp = '/customerSignUp';
   static const String contractorSignUp = '/contractorSignUp';

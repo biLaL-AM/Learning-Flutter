@@ -1,5 +1,6 @@
 import 'package:door_shark/utils/routes/routes.dart';
 import 'package:door_shark/views/commonScreens/getStarted.dart';
+import 'package:door_shark/views/commonScreens/splashscreen.dart';
 import 'package:door_shark/views/commonScreens/userSelection.dart';
 import 'package:door_shark/views/contractorScreens/contractorSignUp.dart';
 import 'package:door_shark/views/customerScreens/customerSignUp.dart';
@@ -20,6 +21,10 @@ class Routes {
       case RoutesName.contractorSignUp:
         return MaterialPageRoute(
             builder: (BuildContext context) => const ContractorSignUp());
+        case RoutesName.splashscreen:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const SplashScreen());
+      
       default:
         return MaterialPageRoute(builder: (_) {
           return const Scaffold(

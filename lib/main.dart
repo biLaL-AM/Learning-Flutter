@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
               // Customize your app's theme here
               ),
 
-          initialRoute: RoutesName.getStarted,
+          initialRoute: RoutesName.splashscreen,
           onGenerateRoute:
               Routes.generateRoutes, // Set GetStartedView as the initial screen
         );
